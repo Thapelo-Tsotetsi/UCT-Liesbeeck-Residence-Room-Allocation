@@ -8,7 +8,7 @@
 		die("Could not drop the database \n".mysql_error());
 
 	mysql_query("CREATE DATABASE IF NOT EXISTS $databasename") or
-	    die("creating database failed... <br />".mysql_error());
+	    	die("creating database failed... <br />".mysql_error());
 	
 	mysql_select_db("$databasename") or
 		die("Could not select database \n");
@@ -19,16 +19,16 @@
 * Creating tables for LBG room allocation
 */
 
-    mysql_query("CREATE TABLE IF NOT EXISTS $table_name_flat (
+    	mysql_query("CREATE TABLE IF NOT EXISTS $table_name_flat (
     				flat_id VARCHAR(225) NOT NULL,
     				room_number VARCHAR(255) NOT NULL,
     				additional_info VARCHAR(255),
     				student_number VARCHAR(255),
-                    mobile_number VARCHAR(255),
+				mobile_number VARCHAR(255),
     				PRIMARY KEY (flat_id)
     	       )") or die("Error creating tables \n".mysql_error());
 
-    mysql_query("CREATE TABLE IF NOT EXISTS $table_name_applications (
+    	mysql_query("CREATE TABLE IF NOT EXISTS $table_name_applications (
                     flat_id_application INT(5) auto_increment NOT NULL,
                     room_number VARCHAR(10),
                     student_number VARCHAR(225),
@@ -38,21 +38,13 @@
                )") or die("Error creating tables \n".mysql_error());
 
 
-    mysql_query("CREATE TABLE IF NOT EXISTS $table_name_members (
+    	mysql_query("CREATE TABLE IF NOT EXISTS $table_name_members (
                     id INT(5) NOT NULL auto_increment,
                     username VARCHAR(255) NOT NULL default '',
                     password VARCHAR(255) NOT NULL default '',
                     PRIMARY KEY (id)
                )") or die("Error creating tables \n".mysql_error());    
-
-            echo "Done creating tables \n";
-
-    //Inserting temp db data        
-    $sql = "INSERT INTO $table_name_members VALUES(1, 'thapelo', 'thapelo407')";
-    mysql_query($sql) or die("Error inserting values \n".mysql_error()); 
-
-    //    $sql = "INSERT INTO $table_name_applications VALUES(1, 'mtnnkr001', '0831234567','email@email.co.za')//";
-    //mysql_query($sql) or die("Error inserting values \n".mysql_error());
+	echo "Done creating tables \n";
 /*
 * Inserting sample data into db for testing.
 */
@@ -135,8 +127,7 @@
                 ('136B','136B','','','')";	
 
 	mysql_query($sql) or die("Error inserting values \n".mysql_error()); 
-    echo "Done inserting values \n";
+    	echo "Done inserting values \n";
 
 	mysql_close($con);
 ?>
-
